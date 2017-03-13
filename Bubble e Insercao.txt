@@ -1,0 +1,60 @@
+import random
+import time
+
+
+
+#Criacao da lista
+lista_aleatoria = [random.randint(-0, 100) for c in range(1000)]
+
+def bubbleSort(lista):
+    for passnum in range(len(lista)-1,0,-1):
+        for i in range(passnum):
+            if lista[i]>lista[i+1]:
+                #No Python, nao precisa fazer com variavel temp
+                #Pode ser feita atribuicao simultanea. Ex.: a, b = b, a
+                #Mas fiz dessa forma para facilitar fazer o codigo
+                #em outra linguagem, se for o caso.
+                temp = lista[i]
+                lista[i] = lista[i+1]
+                lista[i+1] = temp
+
+def insertionSort(lista):
+   for index in range(1,len(lista)):
+
+     valor_atual= lista[index]
+     posicao = index
+
+     while posicao>0 and lista[posicao-1]>valor_atual:
+         lista[posicao]=lista[posicao-1]
+         posicao = posicao-1
+
+     lista[posicao]=valor_atual
+
+
+print "Lista original:"
+print (lista_aleatoria)
+
+
+
+lopis = lista_aleatoria #lopbs - Lista ordenada por Insertionsort (vai ser)
+inicio2 = time.time()
+insertionSort(lopis)
+fim2 = time.time()
+tempois = (fim2 - inicio2) #Tempo que demora para executar o IS
+
+print "Lista ordenada por IS"
+print(lopis)
+print "Tempo de ordenacao por IS: " + str(tempois)
+
+
+lopbs = lista_aleatoria  #lopbs - Lista ordenada por Bubblesort (vai ser)
+
+inicio = time.time()
+bubbleSort(lopbs)
+fim = time.time()
+tempobs = (fim - inicio) #Tempo que demora para executar o BS
+
+print "Lista ordenada por BS"
+print(lopbs)
+print "Tempo de ordenacao por BS: " + str(tempobs)
+
