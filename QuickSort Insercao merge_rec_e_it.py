@@ -128,8 +128,8 @@ def merge_sort_iterative(list_):
         fator = fator * 2
         temp_mid = right
        
-        #Final merge, merge subarrays created by the subdivision
-        #of the factor to the main array.
+#Faz o merge final, unindo subvetores criados pela subdivisao
+#do fator do vetor principal
         if fator > len(list_) :
             mid = right
             right = len(list_)-1
