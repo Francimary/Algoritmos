@@ -130,7 +130,7 @@ def merge_sort_iterative(list_):
        
         #Final merge, merge subarrays created by the subdivision
         #of the factor to the main array.
-        if factor > len(list_) :
+        if fator > len(list_) :
             mid = right
             right = len(list_)-1
             merge(list_, 0, mid, right)
