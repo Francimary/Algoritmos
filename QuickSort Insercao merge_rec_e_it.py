@@ -196,7 +196,7 @@ def particao(lista,primeiro,ultimo):
 print "Tamanho do intervalo ; Tempo: BubbleSort ; InsertSort ; MergeSort (iterativo) ; MergeSort (recursivo); QuickSort"
 vc = [100,400,1000,4000,10000]
 
-for i in range(0, (len (vc)-2)):
+for i in range(0, (len (vc))):
 
     intervalo = vc[i]
 
