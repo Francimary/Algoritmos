@@ -106,7 +106,7 @@ def merge_sort_iterative(list_):
     while 1:
         index = 0
         left = 0
-        right = len(list_) - (len(list_) % factor) - 1
+        right = len(list_) - (len(list_) % fator) - 1
         mid = (fator / 2) - 1
         
         #Auxiliary array to merge subdivisions
