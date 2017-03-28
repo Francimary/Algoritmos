@@ -3,8 +3,12 @@ import time
 import copy
 
 
+intervalo = 4000
 #Criacao da lista
-lista_aleatoria = [random.randint(-0, 10000) for c in range(5000)]
+#lista_aleatoria = [random.randint(-0, 10000) for c in range(intervalo)]
+def lista(intervalo):
+    return [random.randint(-0, 10000) for i in xrange(intervalo)]
+
 
 def bubbleSort(listab):
     for bolhinha in range(len(listab)-1,0,-1):
@@ -109,7 +113,7 @@ def merge_sort_iterative(list_):
         right = len(list_) - (len(list_) % fator) - 1
         mid = (fator / 2) - 1
         
-        #Auxiliary array to merge subdivisions
+        #Vetor auxiliar para subdivisoes do merge
         while index < right:
             temp_left = index
             temp_right = temp_left + fator -1
@@ -117,8 +121,7 @@ def merge_sort_iterative(list_):
             merge (list_, temp_left, mid2, temp_right)
             index = (index + fator)
         
-        #Chek if there is something to merge from the remaining
-        #Sub-array created by the factor
+
         if len(list_) % fator and temp_mid !=0:
 #faz o merge do subvetor para depois fazer o merge com o vetor final
             merge(list_, right +1, temp_mid, len(list_)-1)
@@ -191,34 +194,35 @@ def particao(lista,primeiro,ultimo):
 #print "Lista original:"
 #print (lista_aleatoria)
 
+lista_aleatoria = lista(intervalo)
 # Queremos trabalhar na copia da lista e nao na lista original, por isso "copy"/"deepcopy"
 lms = copy.deepcopy(lista_aleatoria) #lms - Lista ordenada por MergeSort (vai ser)
 inicio3 = time.time()
 mergeSort(lms)
 fim3 = time.time()
 tempoms = (fim3 - inicio3) #Tempo que demora para executar o IS
-print "Tempo de ordenacao por MSrec: " + str(tempoms)
+#print "Tempo de ordenacao por MSrec: " + str(tempoms)
 
 lis = copy.deepcopy(lista_aleatoria)  #lis - Lista ordenada por Insertionsort (vai ser)
 inicio2 = time.time()
 insertionSort(lis)
 fim2 = time.time()
 tempois = (fim2 - inicio2) #Tempo que demora para executar o IS
-print "Tempo de ordenacao por IS: " + str(tempois)
+#print "Tempo de ordenacao por IS: " + str(tempois)
 
 lbs = copy.deepcopy(lista_aleatoria)   #lbs - Lista ordenada por Bubblesort (vai ser)
 inicio = time.time()
 bubbleSort(lbs)
 fim = time.time()
 tempobs = (fim - inicio) #Tempo que demora para executar o BS
-print "Tempo de ordenacao por BS: " + str(tempobs)
+#print "Tempo de ordenacao por BS: " + str(tempobs)
 
 lqs = copy.deepcopy(lista_aleatoria)   #lqs - Lista ordenada por Quicksort (vai ser)
 inicio = time.time()
 quickSort(lqs)
 fim = time.time()
-tempobs = (fim - inicio) #Tempo que demora para executar o BS
-print "Tempo de ordenacao por QS: " + str(tempobs)
+tempoqs = (fim - inicio) #Tempo que demora para executar o QS
+#print "Tempo de ordenacao por QS: " + str(tempoqs)
 
 lmsi = copy.deepcopy(lista_aleatoria) #lms - Lista ordenada por MergeSort iterativo(vai ser)
 inicio4 = time.time()
@@ -226,5 +230,7 @@ inicio4 = time.time()
 merge_sort_iterative(lmsi) #Sort Items
 fim4 = time.time()
 tempomsi = (fim4 - inicio4) #Tempo que demora para executar o IS
-print "Tempo de ordenacao por MSit: " + str(tempomsi)
+#print "Tempo de ordenacao por MSit: " + str(tempomsi)
 
+print "Tamanho do intervalo ; Tempo: BubbleSort ; InsertSort ; MergeSort (iterativo) ; MergeSort (recursivo); QuickSort"
+print str(intervalo) + " ; " + str(tempobs) + " ; " + str(tempois) + " ; " + str(tempomsi) + " ; " + str(tempoms) + " ; " + str(tempoqs)
