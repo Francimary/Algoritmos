@@ -69,31 +69,22 @@ def mergeSort(lista):
 
 
 
-"""
-MergeSort Implementations Recursive & Iterative
-Name: Jorge Valdivia
-"""
- 
+#Versao iterativa do Mergesort / etapa da ordenacao
 def merge(a, left, mid, right):
-    """
-    Funcao Merge
-    """
-    #Copy array
     copy_list = []
     i, j = left, mid + 1
     ind = left
     
     while ind < right+1:
-        
-        #if left array finish merging, copy from right side
+#se o vetor da esquerda terminar o merge, copiar do lado direito
         if i > mid:
             copy_list.append(a[j])
             j +=1
-        #if right array finish merging, copy from left side
+#copiar o do lado esquerdo, se o direito terminar o merge
         elif j > right:
             copy_list.append(a[i])
             i +=1
-        #Check if right array value is less than left one
+#Verifica se o vetor da direita eh menor que o da esquerda
         elif a[j] < a[i]:
             copy_list.append(a[j])
             j +=1
@@ -107,41 +98,39 @@ def merge(a, left, mid, right):
         a[x] = copy_list[ind]
         ind += 1
 
+
+#Versao Iterativa do Algorithm Merge Sort (cont)        
 def merge_sort_iterative(list_):
-    """
-    Versao Iterativa do Algorithm Merge Sort 
-    """
-    factor = 2
+    fator = 2
     temp_mid = 0
-    #Main loop to iterate over the array by 2^n.
     while 1:
         index = 0
         left = 0
-        right = len(list_) - (len(list_) % factor) - 1
-        mid = (factor / 2) - 1
+        right = len(list_) - (len(list_) % fator) - 1
+        mid = (fator / 2) - 1
         
         #Auxiliary array to merge subdivisions
         while index < right:
             temp_left = index
-            temp_right = temp_left + factor -1
+            temp_right = temp_left + fator -1
             mid2 = (temp_right +temp_left) / 2
             merge (list_, temp_left, mid2, temp_right)
-            index = (index + factor)
+            index = (index + fator)
         
         #Chek if there is something to merge from the remaining
         #Sub-array created by the factor
-        if len(list_) % factor and temp_mid !=0:
-            #merge sub array to later be merged to the final array
+        if len(list_) % fator and temp_mid !=0:
+#faz o merge do subvetor para depois fazer o merge com o vetor final
             merge(list_, right +1, temp_mid, len(list_)-1)
             #Update the pivot
             mid = right
-        #Increase the factor
-        factor = factor * 2
+        #Aumenta o fator
+        fator = fator * 2
         temp_mid = right
        
-        #Final merge, merge subarrays created by the subdivision
-        #of the factor to the main array.
-        if factor > len(list_) :
+#Faz o merge final, unindo subvetores criados pela subdivisao
+#do fator do vetor principal
+        if fator > len(list_) :
             mid = right
             right = len(list_)-1
             merge(list_, 0, mid, right)
@@ -149,7 +138,7 @@ def merge_sort_iterative(list_):
 
 
 
-
+#Ordena por Quicksort  
 def quickSort(lista):
    ajudaquickSort(lista,0,len(lista)-1)
 
