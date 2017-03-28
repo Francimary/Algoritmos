@@ -113,7 +113,7 @@ def merge_sort_iterative(list_):
         right = len(list_) - (len(list_) % fator) - 1
         mid = (fator / 2) - 1
         
-        #Auxiliary array to merge subdivisions
+        #Vetor auxiliar para subdivisoes do merge
         while index < right:
             temp_left = index
             temp_right = temp_left + fator -1
@@ -121,8 +121,7 @@ def merge_sort_iterative(list_):
             merge (list_, temp_left, mid2, temp_right)
             index = (index + fator)
         
-        #Chek if there is something to merge from the remaining
-        #Sub-array created by the factor
+
         if len(list_) % fator and temp_mid !=0:
 #faz o merge do subvetor para depois fazer o merge com o vetor final
             merge(list_, right +1, temp_mid, len(list_)-1)
@@ -132,8 +131,8 @@ def merge_sort_iterative(list_):
         fator = fator * 2
         temp_mid = right
        
-        #Final merge, merge subarrays created by the subdivision
-        #of the factor to the main array.
+#Faz o merge final, unindo subvetores criados pela subdivisao
+#do fator do vetor principal
         if fator > len(list_) :
             mid = right
             right = len(list_)-1
